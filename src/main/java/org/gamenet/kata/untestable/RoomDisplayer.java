@@ -9,7 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RoomDisplayer {
-    private final RoomService roomService = new RoomService();
+    public RoomDisplayer(RoomService roomService) {
+        this.roomService = roomService;
+    }
+
+    private final RoomService roomService;
 
     public void createAndDisplayRooms() {
         for (int index = 0; index < 40; index++) {
@@ -48,7 +52,7 @@ public class RoomDisplayer {
     }
 
     public static void main(String[] args) {
-        RoomDisplayer roomDisplayer = new RoomDisplayer();
+        RoomDisplayer roomDisplayer = new RoomDisplayer(new RoomService());
         roomDisplayer.createAndDisplayRooms();
     }
 }
