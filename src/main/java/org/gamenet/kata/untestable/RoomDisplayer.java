@@ -14,21 +14,21 @@ import java.util.List;
 public class RoomDisplayer {
     public void createAndDisplayRooms() {
         for (int index = 0; index < 40; index++) {
-            RoomManager.createRandomRoom();
+            createRandomRoom();
         }
 
         System.out.println("initial rooms");
 
-        List<BasicRoom> roomList = RoomManager.getRoomList();
+        List<BasicRoom> roomList = getRoomList();
         for (BasicRoom room : roomList) {
-            DisplayUtils.display(RoomUtils.getDisplayable(room));
+            displayRoom(room);
         }
 
         ObjectQuery<BasicRoom> roomQuery = new ObjectQuery<>(BasicRoom.class);
         roomQuery.add("width", Integer.valueOf(5));
         List<BasicRoom> filteredRoomList = null;
         try {
-            filteredRoomList = RoomManager.getFilteredRoomList(roomQuery);
+            filteredRoomList = getFilteredRoomList(roomQuery);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             // We should never reach here
         }
@@ -44,8 +44,24 @@ public class RoomDisplayer {
         System.out.println("filtered rooms");
 
         for (BasicRoom room : filteredRoomList) {
-            DisplayUtils.display(RoomUtils.getDisplayable(room));
+            displayRoom(room);
         }
+    }
+
+    public List<BasicRoom> getFilteredRoomList(ObjectQuery<BasicRoom> roomQuery) throws NoSuchFieldException, IllegalAccessException {
+        return RoomManager.getFilteredRoomList(roomQuery);
+    }
+
+    public void displayRoom(BasicRoom room) {
+        DisplayUtils.display(RoomUtils.getDisplayable(room));
+    }
+
+    public List<BasicRoom> getRoomList() {
+        return RoomManager.getRoomList();
+    }
+
+    public void createRandomRoom() {
+        RoomManager.createRandomRoom();
     }
 
     public static void main(String[] args) {

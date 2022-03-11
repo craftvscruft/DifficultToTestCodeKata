@@ -1,5 +1,10 @@
 package org.gamenet.kata.untestable;
 
-public class RoomDisplayTest {
+import org.junit.jupiter.api.Test;
 
+public class RoomDisplayTest {
+    @Test
+    public void foo() {
+
+    }
 }
