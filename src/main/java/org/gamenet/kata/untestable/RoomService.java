@@ -8,7 +8,7 @@ import org.gamenet.kata.unmodifiable.rooms.RoomUtils;
 
 import java.util.List;
 
-public class RoomService {
+public class RoomService implements IRoomService {
     public RoomService() {
     }
 

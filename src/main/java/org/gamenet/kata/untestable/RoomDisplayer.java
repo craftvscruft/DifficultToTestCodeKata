@@ -9,11 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RoomDisplayer {
-    public RoomDisplayer(RoomService roomService) {
+    public RoomDisplayer(IRoomService roomService) {
         this.roomService = roomService;
     }
 
-    private final RoomService roomService;
+    private final IRoomService roomService;
 
     public void createAndDisplayRooms() {
         for (int index = 0; index < 40; index++) {
